@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+mock_backend/db.json
+.claude/
+.env
+.env.*
+.DS_Store
+*.local
