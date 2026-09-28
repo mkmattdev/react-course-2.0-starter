@@ -14,18 +14,21 @@ export const createPlacesHandlers = (initialPlaces = SEED_PLACES, responseDelayM
   return [
     http.get("*/api/places", async () => {
       await delay(responseDelayMs);
+
       return HttpResponse.json(places);
     }),
     http.get<PlaceParams>("*/api/places/:placeId", async ({ params }) => {
       await delay(responseDelayMs);
       const place = places.find((storedPlace) => storedPlace.id === params.placeId);
       if (!place) return missingPlace();
+
       return HttpResponse.json(place);
     }),
     http.post<never, NewPlace>("*/api/places", async ({ request }) => {
       await delay(responseDelayMs);
       const place: Place = { ...(await request.json()), id: crypto.randomUUID() };
       places = [...places, place];
+
       return HttpResponse.json(place, { status: 201 });
     }),
     http.patch<PlaceParams, Partial<Place>>(
@@ -34,12 +37,15 @@ export const createPlacesHandlers = (initialPlaces = SEED_PLACES, responseDelayM
         await delay(responseDelayMs);
         const storedPlace = places.find((place) => place.id === params.placeId);
         if (!storedPlace) return missingPlace();
+
         const updatedPlace: Place = {
           ...storedPlace,
           ...(await request.json()),
           id: params.placeId,
         };
+
         places = places.map((place) => (place === storedPlace ? updatedPlace : place));
+
         return HttpResponse.json(updatedPlace);
       }
     ),
@@ -47,7 +53,9 @@ export const createPlacesHandlers = (initialPlaces = SEED_PLACES, responseDelayM
       await delay(responseDelayMs);
       const removedPlace = places.find((place) => place.id === params.placeId);
       if (!removedPlace) return missingPlace();
+
       places = places.filter((place) => place.id !== params.placeId);
+
       return HttpResponse.json(removedPlace);
     }),
   ];

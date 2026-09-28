@@ -6,6 +6,7 @@ import { defineConfig } from "vitest/config";
 
 // json-server answers instantly; slow it down so loading and saving states are visible.
 const API_DELAY_MS = 800;
+
 const apiDelay = (): Plugin => ({
   name: "api-delay",
   apply: "serve",
