@@ -1,14 +1,6 @@
 # react-course-2.0-starter
 
-Projekt startowy na 3-dniowe szkolenie z Reacta. Od 2. dnia piszemy w nim aplikację Weekendly (lista miejsc na weekend): React 19, TypeScript, Tailwind CSS 4 i json-server. Lekcje z 1. dnia są w osobnym repo `react-course-2.0-lessons-starter`.
-
-## Co jest gotowe
-
-- setup: Vite, TypeScript, ESLint, Prettier i Vitest, `src/styles.css` (Tailwind i kolory aplikacji) i `src/App.tsx`, na razie z samym nagłówkiem „Weekendly”,
-- backend: `mock_backend/` z 12 przykładowymi miejscami dla json-servera i testów,
-- typy `Place` i `PlaceCategory` w `src/models/place.ts`, bo używa ich backend.
-
-Resztę piszemy razem, także wszystkie komponenty.
+Weekendly (lista miejsc na weekend) – projekt z 3-dniowego szkolenia z Reacta: React 19, TypeScript, Tailwind CSS 4 i json-server.
 
 ## Wymagania
 
@@ -34,7 +26,7 @@ npm run dev
 
 Aplikacja: http://127.0.0.1:5173/
 
-`npm run api` tworzy `mock_backend/db.json` z 12 miejscami z `mock_backend/seed.ts` i uruchamia json-server na porcie 3001. Vite przekazuje `/api/places` do json-servera. Restart `npm run api` przywraca początkowe 12 miejsc.
+`npm run api` przy każdym starcie wczytuje 12 miejsc z `mock_backend/seed.ts` i uruchamia json-server na porcie 3001.
 
 ## Sprawdzanie
 
@@ -42,4 +34,33 @@ Aplikacja: http://127.0.0.1:5173/
 npm run check
 ```
 
-Uruchamia Prettiera, ESLinta, TypeScripta i testy. `npm run format` poprawia formatowanie.
+Prettier, ESLint, TypeScript i testy. `npm run format` poprawia formatowanie.
+
+## Backend
+
+Aplikacja wysyła zapytania na `/api/places`. Vite przekazuje je na `http://127.0.0.1:3001/places` (`server.proxy` w `vite.config.ts`).
+
+| Metoda   | Adres             | Body             | Odpowiedź              |
+| -------- | ----------------- | ---------------- | ---------------------- |
+| `GET`    | `/api/places`     | –                | `Place[]`              |
+| `POST`   | `/api/places`     | `Place` bez `id` | `Place` z nadanym `id` |
+| `PATCH`  | `/api/places/:id` | `Place`          | `Place`                |
+| `DELETE` | `/api/places/:id` | –                | usunięty `Place`       |
+
+Nieistniejące `id`: `404`.
+
+`Place`:
+
+```json
+{
+  "id": "dolomites",
+  "name": "A morning in the Dolomites",
+  "category": "nature",
+  "description": "Lace up your walking shoes and follow a mountain trail.",
+  "isVisited": false,
+  "costPln": 0,
+  "addedAt": "2026-01-11"
+}
+```
+
+`category`: `nature` | `culture` | `food` | `city`
