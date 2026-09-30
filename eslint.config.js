@@ -45,6 +45,7 @@ export default defineConfig(
   },
   {
     files: ["src/**/*.{ts,tsx}", "mock_backend/**/*.ts"],
+    ignores: ["**/*.stories.tsx"],
     rules: {
       "no-restricted-syntax": [
         "error",
@@ -55,7 +56,7 @@ export default defineConfig(
   },
   {
     files: ["src/**/*.tsx"],
-    ignores: ["**/*.test.tsx"],
+    ignores: ["**/*.stories.tsx", "**/*.test.tsx"],
     rules: { "react-refresh/only-export-components": "error" },
   },
   prettier

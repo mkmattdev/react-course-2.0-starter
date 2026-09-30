@@ -17,7 +17,9 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build --output-dir node_modules/.cache/storybook"
   },
   "dependencies": {
     "react": "19.3.0",
@@ -26,6 +28,8 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@storybook/addon-docs": "10.6.0",
+    "@storybook/react-vite": "10.6.0",
     "@tailwindcss/vite": "4.3.3",
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
@@ -44,6 +48,7 @@
     "msw": "2.15.0",
     "prettier": "3.9.8",
     "prettier-plugin-tailwindcss": "0.8.1",
+    "storybook": "10.6.0",
     "tailwindcss": "4.3.3",
     "typescript": "6.0.3",
     "typescript-eslint": "8.70.0",

@@ -36,6 +36,14 @@ npm run check
 
 Prettier, ESLint, TypeScript i testy. `npm run format` poprawia formatowanie.
 
+## Storybook
+
+```sh
+npm run storybook
+```
+
+Storybook: http://localhost:6006/
+
 ## Backend
 
 Aplikacja wysyła zapytania na `/api/places`. Vite przekazuje je na `http://127.0.0.1:3001/places` (`server.proxy` w `vite.config.ts`).

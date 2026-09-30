@@ -22,5 +22,5 @@
       "@backend/*": ["./mock_backend/*"]
     }
   },
-  "include": ["src", "mock_backend", "vite.config.ts"]
+  "include": ["src", "mock_backend", "vite.config.ts", ".storybook/*"]
 }
