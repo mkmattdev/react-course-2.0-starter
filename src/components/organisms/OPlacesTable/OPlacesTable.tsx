@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router";
 import { ABadge, type BadgeTone } from "@/components/atoms/ABadge/ABadge";
 import { AButton } from "@/components/atoms/AButton/AButton";
 import { ACheckbox } from "@/components/atoms/ACheckbox/ACheckbox";
@@ -41,7 +42,14 @@ export const OPlacesTable = ({
       id: "name",
       header: "Place",
       sortKey: "name",
-      render: (place) => <span className="line-clamp-2 font-medium">{place.name}</span>,
+      render: (place) => (
+        <Link
+          to={`/places/${place.id}`}
+          className="line-clamp-2 font-medium text-accent hover:underline"
+        >
+          {place.name}
+        </Link>
+      ),
     },
     {
       id: "category",

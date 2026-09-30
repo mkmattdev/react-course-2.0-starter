@@ -1,10 +1,15 @@
 import { render, screen, within } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
 import { describe, expect, it } from "vitest";
 import { App } from "./App";
 
 describe("Weekendly", () => {
   it("renders the page heading inside the main landmark", () => {
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
 
     expect(within(screen.getByRole("main")).getByRole("heading", { level: 1 })).toBeVisible();
   });

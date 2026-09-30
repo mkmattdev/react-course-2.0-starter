@@ -19,6 +19,8 @@ const getPlacePath = (placeId: string) => `/${encodeURIComponent(placeId)}`;
 // Pobranie miejsc z BFF
 export const fetchPlaces = (): Promise<Place[]> => requestPlaces("");
 
+export const fetchPlace = (placeId: string): Promise<Place> => requestPlaces(getPlacePath(placeId));
+
 // C - Create
 // Utworzenie nowego miejsca i wysłanie go do BFF'a
 export const createPlace = (input: PlaceInput): Promise<Place> => {

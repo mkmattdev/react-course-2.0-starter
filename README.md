@@ -1,6 +1,6 @@
 # react-course-2.0-starter
 
-Weekendly (lista miejsc na weekend) – projekt z 3-dniowego szkolenia z Reacta: React 19, TypeScript, Tailwind CSS 4 i json-server.
+Weekendly (lista miejsc na weekend) – projekt z 3-dniowego szkolenia z Reacta: React 19, TypeScript, Tailwind CSS 4, React Router i json-server.
 
 ## Wymagania
 
@@ -43,6 +43,7 @@ Aplikacja wysyła zapytania na `/api/places`. Vite przekazuje je na `http://127.
 | Metoda   | Adres             | Body             | Odpowiedź              |
 | -------- | ----------------- | ---------------- | ---------------------- |
 | `GET`    | `/api/places`     | –                | `Place[]`              |
+| `GET`    | `/api/places/:id` | –                | `Place`                |
 | `POST`   | `/api/places`     | `Place` bez `id` | `Place` z nadanym `id` |
 | `PATCH`  | `/api/places/:id` | `Place`          | `Place`                |
 | `DELETE` | `/api/places/:id` | –                | usunięty `Place`       |
